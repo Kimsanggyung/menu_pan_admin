@@ -32,12 +32,6 @@ function AddMenu(){
     setDate(event.target.value);  
   };
 
-  useEffect(()=>{
-    console.log(allergy, date, image, info, kategorie, name, nutrition)   
-  }, [allergy, date, image, info, kategorie, name, nutrition])
-
-  
-
   return(
     <div>
       <div>
