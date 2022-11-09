@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../css/Login.css'
 import axios from 'axios'
 
-function Login({setLogin}){
+function Login({setLogin, setStateData}){
   
   const [inputID, setInputID] = useState()
   const [inputPWD, setInputPWD] = useState()
@@ -28,6 +28,9 @@ function Login({setLogin}){
         console.log("틀림"); // 콘솔로그에 에러보여주기
       });
   }
+  const signup = () => {
+    setStateData('signup')
+  }
 
   return( 
     <div>
@@ -51,7 +54,7 @@ function Login({setLogin}){
               <button className="loginbutton" type="button" onClick={login}>로그인</button>
             </div>
             <div className="signup">
-              <button className="singupbutton" type="button" onClick={login}>회원가입</button>
+              <button className="singupbutton" type="button" onClick={signup}>관리자 등록</button>
             </div>
         </form>
       </div>
