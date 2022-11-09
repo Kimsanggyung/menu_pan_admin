@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Main from './components/Main';
 import Logout from './components/Logout';
 import AddMenu from './components/AddMenu';
+import Signup from './components/Signup';
 import { useState } from 'react';
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
   let view = null;
 
   if(login === false){
-    view = <Login setLogin={setLogin}></Login>
+    view = <><Login setLogin={setLogin}></Login> <Signup></Signup></>
+    
   }
   if(login === true){
     view =
