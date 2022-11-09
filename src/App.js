@@ -13,8 +13,8 @@ function App() {
   const [stateData, setStateData] = useState()
   let view = null;
 
-  if(login === false){
-    view = <><Login setLogin={setLogin}></Login> <Signup></Signup></>
+  if(login === false || stateData ==='login'){
+    view = <><Login setLogin={setLogin} setStateData={setStateData}></Login></>
     
   }
   if(login === true){
@@ -23,7 +23,9 @@ function App() {
         <Logout setLogin={setLogin}></Logout>
         <Main setStateData={setStateData}></Main>
       </> 
-      
+  }
+  if(stateData === 'signup'){
+    view = <Signup setStateData={setStateData}></Signup>
   }
   if(login === true && stateData === 'addMenu'){
     view =
