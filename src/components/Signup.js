@@ -9,7 +9,8 @@ function Signup({setStateData}){
   const [checkMessage, setCheckMessage] = useState('');
   const [checked, setChecked] = useState('');
   const [error, setError] = useState("")
-  const rePassword =  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; 
+  const reUsername = /^[a-z]+[a-z0-9]{5,19}$/g;
+  const rePassword =  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   
   const inputIdChange = event => { 
     setInputID(event.target.value); // 아이디 입력창에 입력을 하는 등 이벤트가 발생하면 setInputID
@@ -22,26 +23,33 @@ function Signup({setStateData}){
   };
 
   const checkSameID = () => {
-    axios.get("http://127.0.0.1:8000/signup/")
-    .then((response)=>{
-      if(response.data.length > 0){
-        const checkSame = response.data.find((data)=>{
-          const checkInputID = data.username === inputID;
-          return checkInputID
-        })
-        if(checkSame){
-          console.log("이미사용되고있는 아이디입니다.");
-          setError("이미사용되고있는 아이디입니다.");
-          setCheckMessage("")
-          setChecked(false)
-        }else{
-          console.log("사용가능한 아이디입니다.");
-          setChecked(true)
-          setError("");
-          setCheckMessage("사용가능한 아이디입니다.")
+    if(reUsername.test(inputID)){
+      axios.get("http://127.0.0.1:8000/signup/")
+      .then((response)=>{
+        if(response.data.length > 0){
+          const checkSame = response.data.find((data)=>{
+            const checkInputID = data.username === inputID;
+            return checkInputID
+          })
+          if(checkSame){
+            console.log("이미사용되고있는 아이디입니다.");
+            setError("이미사용되고있는 아이디입니다.");
+            setCheckMessage("")
+            setChecked(false)
+          }else{
+            console.log("사용가능한 아이디입니다.");
+            setChecked(true)
+            setError("");
+            setCheckMessage("사용가능한 아이디입니다.")
+          }
         }
-      }
-    })
+      })
+    }else if(inputID === ""){
+      setError('사용하실 아이디를 입력해주세요')
+      setCheckMessage('')
+    }else{
+      setError('아이디는 6자 이상 20자 이하에 영문혹은 숫자여야합니다')
+    }
   }
 
   const submit = () => { //등록 버튼 함수
@@ -51,12 +59,15 @@ function Signup({setStateData}){
     if(!rePassword.test(inputPWD)){ // 비밀번호가 10자리이상에 슷자나 문자를 포함하지 않았다면
       setError("비밀변호는 최소 8 자, 최소 하나의 문자 및 하나의 숫자를 포함하고 있어야합니다"); // 에러메시지 세팅
     };
-    if(checkPWD === null){ // 비밀번호 확인 창에 입력을 하지 않았다면
-      setError("비밀번호를 한번더 입력해주세요."); //에러 메시지 세팅
-    };
     if(inputPWD !== checkPWD){ // 입력한 비밀번호와 비밀번호확인이 서로 다르면
       setError("입력하신 비밀번호가 다릅니다."); // 에러메시지 세팅
     };
+    if(checkPWD === ''){ // 비밀번호 확인 창에 입력을 하지 않았다면
+      setError("비밀번호를 한번더 입력해주세요."); //에러 메시지 세팅
+    };
+    if(inputPWD === ''){
+      setError("비밀번호를 입력해주세요."); //에러 메시지 세팅
+    }
     if(inputID === ""){ //아이디 입력창이 비어있다면
       setError("아이디를 입력해주세요"); //에러메시지 세팅
       console.log("아이디를 입력해주세요"); //콘솔로그에 에러보여주기
