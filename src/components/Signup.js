@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import '../css/Signup.css'
 
-function Signup(){
+function Signup({setStateData}){
   const [inputID, setInputID] = useState("");
   const [inputPWD, setInputPWD] = useState("");
   const [checkPWD, setCheckPWD] = useState("");
@@ -75,28 +75,37 @@ function Signup(){
     });
     console.log('회원이 되신 것을 환영합니다'); // 회원가입성공시 콘솔에 메시지보여주
   };}
+
+  const cancel = () => { // 취소버튼 함수
+    setStateData('login'); //회원 가입을 취소하고 로그인화면을 보여주기 위해 signUpState를 false로
+  };
   
 
   return(
-    <div>
-      <div>
+    <div className="parents">
+      <div className="top">
         <div>
+          <h1>관리자 등록</h1>
+        </div>
+        <div className="inputone">
           <input 
             type="text"
             onChange={inputIdChange}
             value={inputID}
             placeholder="아이디를 입력해주세요."
+            className="inputID"
           />
-          <button onClick={checkSameID}>중복확인</button>
+          <button onClick={checkSameID} className="checkSame">중복확인</button>
           <div>{checkMessage}</div>
         </div>
 
-        <div>
+        <div className="inputtwo">
           <input 
             type="password"
             onChange={inputPwdChange}
             value={inputPWD}
             placeholder="비밀번호를 입력해주세요"
+            className="inputPWD"
           />
         </div>
 
@@ -106,19 +115,20 @@ function Signup(){
             onChange={checkPwdChange}
             value={checkPWD}
             placeholder="비밀번호를 한번 더 입력해주세요"
+            className="inputPWD"
           />
         </div>
 
-        <div className="text-red-500">
+        <div className="error">
           {error}
         </div>
     
         <div>
-          <button type="submit" onClick={submit}>등록</button>
+          <button type="submit" className="submit" onClick={submit}>등록</button>
         </div>
 
         <div>
-          <button type="submit">취소</button>
+          <button type="submit" className="cancel" onClick={cancel}>취소</button>
         </div>
         
       </div>
