@@ -1,18 +1,18 @@
+import '../css/Addmenu.css'
+
 import { useEffect, useState } from "react";
 
 function AddMenu(){
 
-  const [image, setImage] = useState()
+  let imgFile = null
+  const [image, setImage] = useState(null)
   const [name, setName] = useState()
   const [kategorie, setKategorie] = useState()
   const [info, setInfo] = useState()
   const [nutrition, setNutrition] = useState()
   const [allergy, setAllergy] = useState()
   const [date, setDate] = useState()
-
-  const imgChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
-    setImage(event.target.value);  
-  };
+  
   const nameChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
     setName(event.target.value);  
   };
@@ -32,22 +32,42 @@ function AddMenu(){
     setDate(event.target.value);  
   };
 
+  
+  const handleChangeFile =(e)=>{
+        let reader = new FileReader();
+        if (e.target.files[0]){
+            reader.readAsDataURL(e.target.files[0]);
+        }
+        reader.onloadend = () =>{
+            const resultImage = reader.result;
+            setImage(resultImage)
+        };
+    }
+
+    if(image !== null){
+      imgFile =  
+        <img src={image} alt="img" className='addimg'></img>
+    }
+
   return(
-    <div>
-      <div>
+    <div className="addform">
+      <div className="image">
         <span>상품사진: </span>
         <input type="file" 
           accept='image/jpg,impge/png,image/jpeg,image/gif'
-          onChange={imgChange}
-        ></input>
+          onChange={handleChangeFile}
+          ></input>
+        <div className='menuimg'>
+          {imgFile}
+        </div>
       </div>   
       
-      <div>
+      <div className='name'>
         <span>상품명: </span>
         <input type="text" onChange={nameChange}></input>
       </div> 
 
-      <div>
+      <div className='class'>
         <span>상품분류:</span>
         <select onChange={kategorieChange}>
           <option>--</option>
@@ -78,6 +98,10 @@ function AddMenu(){
         <input type="text" onChange={dateChange}></input>
       </div>
 
+      <div>
+        <button type='submit'>취소</button>
+        <button type='submit' className='addbutton'>등록</button>
+      </div>
 
     </div>
   );
