@@ -1,14 +1,26 @@
 .addform{
   display: grid;
   justify-content: center;
-  justify-items: center;
-  margin-top: 130px;
   background-color: whitesmoke;
   width: 500px;
+  height: 640px;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+  padding: 50px 35px;
 }
 .image{
   margin-bottom: 30px;
+  width: 300px;
+  height: 340px;
   border: 3px solid gray;
+  display: grid;
+  justify-content: center;
 }
 
 .addbutton{
@@ -20,8 +32,15 @@
 .menuimg{
   width: 264px;
   height: 264px;
+  background-color: aliceblue;
 }
 .addimg{
   width: 264px;
   height: 264px;
+}
+.addbutton{
+  float: left;
+}
+.imgtext{
+  margin-top: 10px;
 }
