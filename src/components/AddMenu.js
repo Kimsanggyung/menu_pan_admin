@@ -118,17 +118,17 @@ function AddMenu(){
 
       <div>
         <span>상품정보: </span>
-        <input type="textarea" onChange={infoChange}></input>
+        <textarea type="text" onChange={infoChange}></textarea>
       </div>
 
       <div>
         <span>영양정보: </span>
-        <input type="textarea" onChange={nutritionChange}></input>
+        <textarea type="text" onChange={nutritionChange}></textarea>
       </div>
 
       <div>
         <span>알레르기정보: </span>
-        <input type="textarea" onChange={allergyChange}></input>
+        <textarea type="text" onChange={allergyChange}></textarea>
       </div>
 
       <div>
