@@ -1,11 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../css/Login.css'
 import axios from 'axios'
 
-function Login({setLogin, setStateData}){
+function Login({setLogin, setToken, setStateData}){
   
-  const [inputID, setInputID] = useState()
-  const [inputPWD, setInputPWD] = useState()
+  const [inputID, setInputID] = useState('');
+  const [inputPWD, setInputPWD] = useState('');
+  const [error, setError] = useState('');
+  const [saveID, setSaveID] = useState(false);
+  const [saveLogin, setSaveLogin] = useState(false);
+  
+  let savedID = localStorage.getItem('saveID');
+  let loggedID = sessionStorage.getItem('loggedUser');
+
+  useEffect(()=>{
+    console.log(saveID)
+    console.log(saveLogin)
+  },[saveID, saveLogin])
+
+  useEffect(()=>{
+    if(savedID){
+      setLogin(true);
+      setStateData('main');
+    }else if(loggedID){
+      setLogin(true);
+      setStateData('main');
+    }
+  },[])
+  
 
   const inputIdChange = event => { // 아이디 입력창에 입력을 하는 등 이벤트가 발생하면 setInputID
     setInputID(event.target.value);
@@ -13,21 +35,48 @@ function Login({setLogin, setStateData}){
   const inputPwdChange = event => { // 비밀번호 입력창에 입력을 하는 등 이벤트가 발생하면 setInputPWD
     setInputPWD(event.target.value);
   };
+  const saveIDClick = () => { // 로그인 저장버튼 함수
+    setSaveID(true);
+  };
+  const saveLoginClick = () => { // 로그인 저장버튼 함수
+    setSaveLogin(true);
+  };
   
   const login = () => {
-    axios
+    if(inputPWD === ''){ //아이디 입력창이 비어있다면
+      setError("비밀번호를 입력해주세요"); //에러메시지 세팅
+      console.log("비밀번호를 입력해주세요"); // 콘솔로그에 에러보여주기
+      };
+    if(inputID === ''){ //비밀번호 입력창이 비어있다면
+      setError("아이디를 입력해주세요"); //에러메시지 세팅
+      console.log("아이디를 입력해주세요"); // 콘솔로그에 에러보여주기
+    };
+    if(inputID !== "" && inputPWD !== ""){
+      axios
       .post("http://127.0.0.1:8000/login/", {
         id: inputID,
         password: inputPWD
       })
       .then(function (response){
-        console.log(response.status);
+        setLogin(true);
+        setStateData('main');
+        setToken(response.data.Token)
+        sessionStorage.setItem('Token', response.data.Token)
+        if(saveLogin === true){
+          sessionStorage.setItem("loggedUser", inputID )
+          localStorage.setItem('Token', response.data.Token)
+        }
+        if(saveID === true){
+          localStorage.setItem('saveID', inputID)
+        }
       })
       .catch(function (error){
         console.log(error)
         console.log("틀림"); // 콘솔로그에 에러보여주기
       });
+    } 
   }
+
   const signup = () => {
     setStateData('signup')
   }
@@ -46,9 +95,14 @@ function Login({setLogin, setStateData}){
 
             <label className="password">비밀번호</label>
             <input type="password" placeholder="비밀번호를 입력하세요" className="text" onChange={inputPwdChange}></input>
+
+            <div className="error">
+              {error}
+            </div>
+
             <div className="checkbox">
-              <label className="save"><input type="checkbox"></input>아이디저장</label>
-              <label className="auto"><input type="checkbox"></input>자동로그인</label>
+              <label className="save"><input type="checkbox" onClick={saveIDClick}></input>아이디저장</label>
+              <label className="auto"><input type="checkbox" onClick={saveLoginClick}></input>자동로그인</label>
             </div>
             <div>
               <button className="loginbutton" type="button" onClick={login}>로그인</button>
