@@ -1,0 +1,27 @@
+.addform{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 130px;
+  background-color: whitesmoke;
+  width: 500px;
+}
+.image{
+  margin-bottom: 30px;
+  border: 3px solid gray;
+}
+
+.addbutton{
+  display: grid;
+  justify-content: center;
+  margin-right: 18px;
+}
+
+.menuimg{
+  width: 264px;
+  height: 264px;
+}
+.addimg{
+  width: 264px;
+  height: 264px;
+}
