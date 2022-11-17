@@ -1,4 +1,4 @@
-
+import '../css/Buttons.css'
 
 function Buttons({setView}){
 
@@ -25,13 +25,28 @@ function Buttons({setView}){
     <>
       <div className="buttons">
         <div className="bb">
-          <span id="all" onClick={viewAll}>전체</span>
-          <span id="drink" onClick={viewDrink}>음료</span>
-          <span id="meal" onClick={viewMeal}>식사</span>
-          <span id="dessert" onClick={viewDessert}>디저트</span>
-          <span id="side" onClick={viewSide}>사이드</span>
-          <span id="specialties" onClick={viewSpecialties}>특선</span>
+          <div onClick={viewAll}>전체</div>
         </div> 
+
+        <div>
+          <div onClick={viewDrink}>음료</div>
+        </div>
+
+        <div>
+          <div onClick={viewMeal}>식사</div>
+        </div>
+
+        <div>
+          <div onClick={viewDessert}>디저트</div>
+        </div>  
+
+        <div>
+          <div onClick={viewSide}>사이드</div> 
+        </div>
+
+        <div>
+          <div onClick={viewSpecialties}>특선</div>
+        </div>
       </div>  
     </>
     
