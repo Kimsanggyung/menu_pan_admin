@@ -13,16 +13,11 @@ function AddMenu(){
   const [date, setDate] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(()=>{
-    console.log(name)
-  },[name])
-
   const nameChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
     setName(event.target.value);  
   };
   const kategorieChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
     setKategorie(event.target.value);  
-    console.log(event.target.value)
   };
   const infoChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
     setInfo(event.target.value);  
@@ -34,7 +29,6 @@ function AddMenu(){
     setAllergy(event.target.value);  
   };
   const dateChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
-    console.log(event.target.value)
     setDate(event.target.value);  
   };
   const handleChangeFile =(e)=>{
@@ -56,34 +50,27 @@ function AddMenu(){
   const submit = () => { // 등록버튼 함수
     if(image === null || image === ""){
       setError("상품 사진을 등록해주세요");
-      console.log("상품 사진을 등록해주세요")
     };
     if(name === null || name === ""){
       setError("상품명을 입력해주세요");
-      console.log("상품명을 입력해주세요")
     };
     if(kategorie === null || kategorie === "--"){
       setError("상품 분류를 선택해 주세요")
-      console.log("상품 분류를 선택해 주세요")
     }
     if(info === null || info === ""){
       setError("상품 정보를 입력해주세요")
-      console.log("상품 정보를 입력해주세요")
     }
     if(nutrition === null || nutrition === ""){
       setError("상품의 영양정보를 입력해주세요")
-      console.log("상품의 영양정보를 입력해주세요")
     } 
     if(allergy === null || allergy === ""){
       setError("상품의 알러지정보를 입력해주세요")
-      console.log("상품의 알러지정보를 입력해주세요")
     } 
     if(date === null || date === ""){
       setError("상품 출시일를 선택해주세요")
     }
     if(image && name && kategorie && info && nutrition && allergy && date){
       setError('')
-      console.log('등록성공')
     }
   };
 
@@ -136,11 +123,14 @@ function AddMenu(){
         <input type="date" onChange={dateChange}></input>
       </div>
 
+      <div className='error'>
+        {error}
+      </div>
+
       <div >
         <button type='submit'>취소</button>
         <button type='submit' className='addbutton' onClick={submit}>등록</button>
       </div>
-
     </div>
   );
 

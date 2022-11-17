@@ -32,12 +32,10 @@ function Signup({setStateData}){
             return checkInputID
           })
           if(checkSame){
-            console.log("이미사용되고있는 아이디입니다.");
             setError("이미사용되고있는 아이디입니다.");
             setCheckMessage("")
             setChecked(false)
           }else{
-            console.log("사용가능한 아이디입니다.");
             setChecked(true)
             setError("");
             setCheckMessage("사용가능한 아이디입니다.")
@@ -70,7 +68,6 @@ function Signup({setStateData}){
     }
     if(inputID === ""){ //아이디 입력창이 비어있다면
       setError("아이디를 입력해주세요"); //에러메시지 세팅
-      console.log("아이디를 입력해주세요"); //콘솔로그에 에러보여주기
     };
     if(inputID !== null && inputPWD !== null && inputPWD !== null && checkPWD === inputPWD && rePassword.test(inputPWD) && checked === true){ // 입력창에 모두 비어있지 않고 중복확인을 하고 입력한 비밀번호와 비밀번호 확인이 같다면
     axios
@@ -84,8 +81,7 @@ function Signup({setStateData}){
     .catch(function (error){
       console.log(error)
     });
-    console.log('회원이 되신 것을 환영합니다'); // 회원가입성공시 콘솔에 메시지보여주
-  };}
+  }};
 
   const cancel = () => { // 취소버튼 함수
     setStateData('login'); //회원 가입을 취소하고 로그인화면을 보여주기 위해 signUpState를 false로

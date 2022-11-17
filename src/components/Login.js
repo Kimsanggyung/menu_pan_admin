@@ -14,11 +14,6 @@ function Login({setLogin, setToken, setStateData}){
   let loggedID = sessionStorage.getItem('loggedUser');
 
   useEffect(()=>{
-    console.log(saveID)
-    console.log(saveLogin)
-  },[saveID, saveLogin])
-
-  useEffect(()=>{
     if(savedID){
       setLogin(true);
       setStateData('main');
@@ -45,11 +40,9 @@ function Login({setLogin, setToken, setStateData}){
   const login = () => {
     if(inputPWD === ''){ //아이디 입력창이 비어있다면
       setError("비밀번호를 입력해주세요"); //에러메시지 세팅
-      console.log("비밀번호를 입력해주세요"); // 콘솔로그에 에러보여주기
       };
     if(inputID === ''){ //비밀번호 입력창이 비어있다면
       setError("아이디를 입력해주세요"); //에러메시지 세팅
-      console.log("아이디를 입력해주세요"); // 콘솔로그에 에러보여주기
     };
     if(inputID !== "" && inputPWD !== ""){
       axios
@@ -72,7 +65,6 @@ function Login({setLogin, setToken, setStateData}){
       })
       .catch(function (error){
         console.log(error)
-        console.log("틀림"); // 콘솔로그에 에러보여주기
       });
     } 
   }

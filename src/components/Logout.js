@@ -1,7 +1,7 @@
 import axios from "axios";
 
 function Logout({token, setStateData, setLogin}){
-  console.log(token)
+  
   const logout = () => {
     setLogin(false)
     setStateData('login')
