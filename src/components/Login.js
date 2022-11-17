@@ -10,13 +10,13 @@ function Login({setLogin, setToken, setStateData}){
   const [saveID, setSaveID] = useState(false);
   const [saveLogin, setSaveLogin] = useState(false);
   
-  let savedID = localStorage.getItem('saveID');
+  let savedID = sessionStorage.getItem('saveID');
   let loggedID = sessionStorage.getItem('loggedUser');
+  let getToken = localStorage.getItem('Token')
 
   useEffect(()=>{
     if(savedID){
-      setLogin(true);
-      setStateData('main');
+      setInputID(savedID)
     }else if(loggedID){
       setLogin(true);
       setStateData('main');
@@ -60,7 +60,7 @@ function Login({setLogin, setToken, setStateData}){
           localStorage.setItem('Token', response.data.Token)
         }
         if(saveID === true){
-          localStorage.setItem('saveID', inputID)
+          sessionStorage.setItem('saveID', inputID)
         }
       })
       .catch(function (error){
@@ -83,7 +83,7 @@ function Login({setLogin, setToken, setStateData}){
             <h3>로그인</h3>
 
             <label className="id">아이디</label>
-            <input type="text" placeholder="아이디를 입력하세요" className="text" onChange={inputIdChange}></input>
+            <input type="text" placeholder="아이디를 입력하세요" className="text" onChange={inputIdChange} value={inputID || ""}></input>
 
             <label className="password">비밀번호</label>
             <input type="password" placeholder="비밀번호를 입력하세요" className="text" onChange={inputPwdChange}></input>
