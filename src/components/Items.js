@@ -1,17 +1,55 @@
+import axios from "axios";
+import '../css/Items.css'
+import { useEffect, useState } from "react";
+
 function Itmes(){
 
+  const [menuList, setList] = useState(null)
+  const [Items, setItems] = useState()
+
+  
+
+  useEffect(()=>{
+    axios.get("http://127.0.0.1:8000/menu/")
+    .then(function(response){
+      console.log(response)
+      setList(response.data)
+    })
+    .catch(function(response){
+      console.log(response)
+    })
+  },[])
+
+  useEffect(()=>{
+    if(menuList !== null){
+      setItems(
+        menuList.map((menu, index)=>{
+          return(
+            <div key={index} className="itemtop" >
+              <div>
+                <img src={menu.image} alt={menu.name + "사진"} className="itemimg"></img>
+              </div>  
+                
+              <div className='name'>
+                <span>상품명: {menu.name}</span>
+              </div> 
+
+              <div className='price'>
+                <span>상품가격: </span>
+              </div>
+            </div>
+          )
+        })
+      )
+    }
+  },[menuList])
+
+  
+
  return(
-  <div className="Items">
-    <img className="photo" src="https://images.velog.io/images/skawnkk/post/ecd9ef84-f428-4001-b198-bf2ff9527bbb/banchan.PNG" alt="사진">
-    </img>
-    <div className="Item">
-      <header>
-        <h2 className="Itemname">test</h2>
-        <h3 className="price">1.2만원</h3>
-      </header>
-      <h4>dssafdsjldjkljklsajklsdjlk</h4>
-    </div>
-  </div>
+  <>
+    {Items}
+  </>
  )
 
 }
