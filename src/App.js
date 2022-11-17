@@ -33,7 +33,6 @@ function App() {
     view =
       <>
         <Logout setStateData={setStateData} setLogin={setLogin}></Logout>
-        <Main></Main>
         <AddMenu></AddMenu>
       </> 
       
