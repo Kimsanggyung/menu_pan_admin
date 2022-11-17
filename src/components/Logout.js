@@ -1,4 +1,5 @@
 import axios from "axios";
+import '../css/logout.css'
 
 function Logout({token, setStateData, setLogin}){
   
@@ -24,7 +25,7 @@ function Logout({token, setStateData, setLogin}){
   }
 
   return(
-    <button className="font-Do w-20 h-8 ml-4 rounded border-2 text-xl border-gray-500" onClick={logout}>로그아웃</button>
+    <button className="logoutButton" onClick={logout}>로그아웃</button>
   );
 
 }
