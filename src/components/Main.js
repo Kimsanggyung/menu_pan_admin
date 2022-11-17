@@ -14,11 +14,16 @@ function Main({setStateData}) {
   }
 
   return (
-    <div>
-      <h1 className="App">Menu Pan</h1>
-      <Buttons setView={setView}></Buttons>
-      <button onClick={viewAdd}>메뉴추가</button>
-    </div>
+    <>
+      <div>
+        <h1 className="App">Menu Pan</h1>
+        <Buttons setView={setView}></Buttons>
+        <button onClick={viewAdd}>메뉴추가</button>
+      </div>
+      <div>
+        <Itmes/>
+      </div>
+    </>
   );
 }
 
