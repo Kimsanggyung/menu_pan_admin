@@ -1,5 +1,6 @@
 import '../css/Addmenu.css'
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import axios from 'axios';
 
 function AddMenu(){
 
@@ -11,6 +12,7 @@ function AddMenu(){
   const [nutrition, setNutrition] = useState(null);
   const [allergy, setAllergy] = useState(null);
   const [date, setDate] = useState(null);
+  const [price, setPrice] = useState(null)
   const [error, setError] = useState(null);
 
   const nameChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
@@ -30,6 +32,9 @@ function AddMenu(){
   };
   const dateChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
     setDate(event.target.value);  
+  };
+  const priceChange = event => { // 월 산텍창에서 선택을을 하는 등 이벤트가 발생하면 setSelectMonth
+    setPrice(event.target.value);  
   };
   const handleChangeFile =(e)=>{
         let reader = new FileReader();
@@ -69,8 +74,27 @@ function AddMenu(){
     if(date === null || date === ""){
       setError("상품 출시일를 선택해주세요")
     }
-    if(image && name && kategorie && info && nutrition && allergy && date){
+    if(price === null || price === ""){
+      setError("상품 가격을 입력해주세요")
+    }
+    if(image && name && kategorie && info && nutrition && allergy && date && price){
       setError('')
+      axios.post("http://127.0.0.1:8000/menu/", {
+        image: image,
+        name: name,
+        info: info,
+        facts: nutrition,
+        price: price,
+        allergy: allergy,
+        kategorie: kategorie,
+        release_date: date
+      })
+      .then(function(response){
+        console.log(response)
+      })
+      .catch(function(error){
+        console.log(error)
+      })
     }
   };
 
@@ -90,6 +114,11 @@ function AddMenu(){
       <div className='name'>
         <span>상품명: </span>
         <input type="text" onChange={nameChange}></input>
+      </div> 
+
+      <div className='price'>
+        <span>상품가격: </span>
+        <input type="text" onChange={priceChange}></input>
       </div> 
 
       <div className='class'>
