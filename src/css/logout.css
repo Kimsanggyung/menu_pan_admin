@@ -1,0 +1,20 @@
+.logoutButton{
+  position: absolute;
+  transform: translate(2700%,30%);
+  background-color: lightgrey;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	margin-top: 13px;
+  margin-left: 30px;
+	text-decoration:none;
+  height: 30px;
+}
+
+.logoutButton:hover {
+	background-color:#b34332;
+}
