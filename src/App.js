@@ -5,12 +5,17 @@ import Main from './components/Main';
 import Logout from './components/Logout';
 import AddMenu from './components/AddMenu';
 import Signup from './components/Signup';
+import Detail from './components/Detail';
+import Edit from './components/EditMenu';
 import { useState } from 'react';
 
 function App() {
 
-  const [login, setLogin] = useState(false);
-  const [stateData, setStateData] = useState('addMenu');
+  const [login, setLogin] = useState(true);
+  const [stateData, setStateData] = useState('main');
+  const [kategorie, setKategorie] = useState('all')
+  const [menuList, setList] = useState(null)
+  const [targetID, setTargetID] =useState(null);
   const [token, setToken] = useState(null);
   let view = null;
 
@@ -22,21 +27,36 @@ function App() {
     view =
       <>
         <Logout token={token} setStateData={setStateData} setLogin={setLogin}></Logout>
-        <Main setStateData={setStateData}></Main>
+        <Main targetID={targetID} setTargetID={setTargetID} menuList={menuList} setList={setList} kategorie={kategorie} setKategorie={setKategorie} setStateData={setStateData}></Main>
       </> 
   }
   if(stateData === 'signup'){
     view = <Signup setStateData={setStateData}></Signup>
   }
 
-  if(login === false && stateData === 'addMenu'){
+  if(login === true && stateData === 'addMenu'){
     view =
       <>
         <Logout setStateData={setStateData} setLogin={setLogin}></Logout>
         <AddMenu></AddMenu>
-      </> 
-      
+      </>    
   }
+  if(login === true && stateData === 'detail'){
+    view =
+      <>
+        <Logout setStateData={setStateData} setLogin={setLogin}></Logout>
+        <Detail targetID={targetID} setStateData={setStateData}></Detail>
+      </>    
+  }
+
+  if(login === true && stateData === 'edit'){
+    view =
+      <>
+        <Logout setStateData={setStateData} setLogin={setLogin}></Logout>
+        <Edit targetID={targetID} setStateData={setStateData}></Edit>
+      </>    
+  }
+
 
   return (
     <>
