@@ -3,18 +3,19 @@ import Itmes from './Items';
 import Kategorie from './Kategorie';
 import Buttons from './Buttons';
 
-function Main({menuList, kategorie, setKategorie, setList, setStateData}) {
+function Main({targetID, setTargetID, menuList, kategorie, setKategorie, setList, setStateData}) {
 
   const [Items, setItems] = useState()
 
   useEffect(()=>{
     if(kategorie === 'all'){
-      setItems(<Itmes menuList={menuList} setList={setList}/>)
+      setItems(<Itmes setStateData={setStateData} menuList={menuList} setList={setList} setTargetID={setTargetID}/>)
     }
     if(kategorie !== 'all'){
-      setItems(<Kategorie menuList={menuList} kategorie={kategorie} ></Kategorie>)
+      setItems(<Kategorie setStateData={setStateData} menuList={menuList} kategorie={kategorie} setTargetID={setTargetID}></Kategorie>)
     }
-  },[menuList, kategorie, setList])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[menuList, kategorie])
 
   const viewAdd = () => {
     setStateData('addMenu')
