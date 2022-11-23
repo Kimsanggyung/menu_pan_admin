@@ -2,10 +2,9 @@ import axios from "axios";
 import '../css/Items.css'
 import { useEffect, useState } from "react";
 
-function Itmes(){
+function Itmes({menuList, setList}){
 
-  const [menuList, setList] = useState(null)
-  const [Items, setItems] = useState()
+  const [Items, setItems] = useState();
 
   
 
@@ -18,7 +17,7 @@ function Itmes(){
     .catch(function(response){
       console.log(response)
     })
-  },[])
+  },[setList])
 
   useEffect(()=>{
     if(menuList !== null){
