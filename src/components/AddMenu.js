@@ -2,7 +2,7 @@ import '../css/Addmenu.css'
 import { useState } from "react";
 import axios from 'axios';
 
-function AddMenu(){
+function AddMenu({setStateData}){
 
   let imgFile = null
   const [image, setImage] = useState(null);
@@ -37,15 +37,19 @@ function AddMenu(){
     setPrice(event.target.value);  
   };
   const handleChangeFile =(e)=>{
-        let reader = new FileReader();
-        if (e.target.files[0]){
-            reader.readAsDataURL(e.target.files[0]);
-        }
-        reader.onloadend = () =>{
-            const resultImage = reader.result;
-            setImage(resultImage)
-        };
+    let reader = new FileReader();
+    if (e.target.files[0]){
+      reader.readAsDataURL(e.target.files[0]);
     }
+    reader.onloadend = () => {
+      const resultImage = reader.result;
+      setImage(resultImage);
+    };
+  };
+  const exit = () => {
+    setStateData('main')
+  }
+  
 
   if(image !== null){
     imgFile =  
@@ -91,6 +95,7 @@ function AddMenu(){
       })
       .then((response)=>{
         console.log(response.status)
+        setStateData('main')
       })
       .catch(function(error){
         console.log(error)
@@ -158,7 +163,7 @@ function AddMenu(){
       </div>
 
       <div >
-        <button type='submit'>취소</button>
+        <button type='submit' onClick={exit}>취소</button>
         <button type='submit' className='addbutton' onClick={submit}>등록</button>
       </div>
     </div>
