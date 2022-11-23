@@ -38,14 +38,14 @@ function App() {
     view =
       <>
         <Logout setStateData={setStateData} setLogin={setLogin}></Logout>
-        <AddMenu></AddMenu>
+        <AddMenu setStateData={setStateData}></AddMenu>
       </>    
   }
   if(login === true && stateData === 'detail'){
     view =
       <>
         <Logout setStateData={setStateData} setLogin={setLogin}></Logout>
-        <Detail targetID={targetID} setStateData={setStateData}></Detail>
+        <Detail targetID={targetID} menuList={menuList} setList={setList} setStateData={setStateData}></Detail>
       </>    
   }
 
