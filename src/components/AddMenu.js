@@ -89,8 +89,8 @@ function AddMenu(){
         kategorie: kategorie,
         release_date: date
       })
-      .then(function(response){
-        console.log(response)
+      .then((response)=>{
+        console.log(response.status)
       })
       .catch(function(error){
         console.log(error)
