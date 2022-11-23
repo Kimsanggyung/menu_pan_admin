@@ -129,6 +129,7 @@ function AddMenu(){
           <option>식사</option>
           <option>디저트</option>
           <option>사이드</option>
+          <option>특선</option>
         </select>
       </div>
 
