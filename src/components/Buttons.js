@@ -1,24 +1,24 @@
 import '../css/Buttons.css'
 
-function Buttons({setView}){
+function Buttons({setKategorie}){
 
   const viewAll = () => {
-    setView("all")
+    setKategorie("all")
   }
   const viewDrink = () => {
-    setView("dirnk")
+    setKategorie("음료")
   }
   const viewMeal = () => {
-    setView("meal")
+    setKategorie("식사")
   }
   const viewDessert = () => {
-    setView("dessert")
+    setKategorie("디저트")
   }
   const viewSide = () => {
-    setView("side")
+    setKategorie("사이드")
   }
   const viewSpecialties = () => {
-    setView("specialties")
+    setKategorie("특선")
   }
 
   return(
@@ -48,6 +48,7 @@ function Buttons({setView}){
           <div onClick={viewSpecialties}>특선</div>
         </div>
       </div>  
+      <div className='underline'></div>
     </>
     
   )
