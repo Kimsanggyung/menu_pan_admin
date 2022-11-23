@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Detail({targetID, setStateData}){
+function Detail({targetID, setList, setStateData}){
 
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
@@ -35,6 +35,24 @@ function Detail({targetID, setStateData}){
   const editMode = () => {
     setStateData('edit')
   }
+
+  const drop = () => {
+    if (window.confirm(`${name} 메뉴을 삭제 하시겠습니까?`) === true){ 
+      axios.delete(`http://127.0.0.1:8000/menu/${targetID}`,{
+      }).then(()=>{
+        axios.get("http://127.0.0.1:8000/menu/", {
+        })
+        .then((response)=>{
+          setList(response.data)
+          setStateData('main')
+          console.log("success get")
+        })
+        .catch(function(error){
+          console.log(error);
+        })
+      })
+    }
+  };
 
   return(
     <>
@@ -80,6 +98,10 @@ function Detail({targetID, setStateData}){
           <div>
             <button onClick={editMode}>수정</button>
             <button onClick={exit}>메인화면</button>
+          </div>
+
+          <div>
+            <button onClick={drop}>메뉴삭제</button>
           </div>
         </div>
       </div>
