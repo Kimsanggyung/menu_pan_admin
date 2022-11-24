@@ -15,17 +15,21 @@ function Login({setLogin, setToken, setStateData}){
   let getToken = localStorage.getItem('Token')
 
   useEffect(()=>{
-    if(savedID){
+
+    if(savedID !== null){
       setInputID(savedID)
     }
-    if(loggedID){
+    if(loggedID !== null){
       setLogin(true);
       setStateData('main');
       
     }
-    if(getToken){
-      setToken(getToken)
+    if(getToken !== null){
+      setToken(getToken);
+      setLogin(true);
+      setStateData('main');
     }
+
   },[])
   
 
@@ -56,14 +60,13 @@ function Login({setLogin, setToken, setStateData}){
         password: inputPWD
       })
       .then(function (response){
-      console.log(response.status)
+        console.log(response.status)
         setLogin(true);
         setStateData('main');
         setToken(response.data.Token)
-        sessionStorage.setItem('Token', response.data.Token)
+        localStorage.setItem('Token', response.data.Token)
         if(saveLogin === true){
           sessionStorage.setItem("loggedUser", inputID )
-          localStorage.setItem('Token', response.data.Token)
         }
         if(saveID === true){
           sessionStorage.setItem('saveID', inputID)
