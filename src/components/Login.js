@@ -17,9 +17,14 @@ function Login({setLogin, setToken, setStateData}){
   useEffect(()=>{
     if(savedID){
       setInputID(savedID)
-    }else if(loggedID){
+    }
+    if(loggedID){
       setLogin(true);
       setStateData('main');
+      
+    }
+    if(getToken){
+      setToken(getToken)
     }
   },[])
   
