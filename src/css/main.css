@@ -1,0 +1,17 @@
+.addtop{
+  display: grid;
+  justify-content: space-around;
+  float: left;
+  width: 25%;
+  margin-top: 120px;
+}
+.addsize{
+  width: 264px;
+  height: 264px;
+  cursor: pointer;
+  font-size: large;
+}
+.plus{
+  font-size: xx-large;
+}
+
