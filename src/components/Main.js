@@ -45,7 +45,7 @@ function Main({targetID, setTargetID, menuList, kategorie, setKategorie, setList
   return (
     <>
       <div>
-        <h1 className="App">Menu Pan</h1>
+        <h1 className="maintitle">Menu Pan</h1>
         <Buttons setKategorie={setKategorie}></Buttons>
       </div>
 

@@ -1,3 +1,7 @@
+.maintitle{
+  display: grid;
+  justify-content: center;
+}
 .addtop{
   display: grid;
   justify-content: space-around;
