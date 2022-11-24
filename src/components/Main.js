@@ -4,7 +4,7 @@ import Kategorie from './Kategorie';
 import Buttons from './Buttons';
 import '../css/main.css'
 
-function Main({targetID, setTargetID, menuList, kategorie, setKategorie, setList, setStateData}) {
+function Main({setTargetID, menuList, kategorie, setKategorie, setList, setStateData}) {
 
   const [Items, setItems] = useState()
 
@@ -12,6 +12,7 @@ function Main({targetID, setTargetID, menuList, kategorie, setKategorie, setList
     if(kategorie === 'all'){
       setItems(
         <>
+          <div id='alltitle'>전체메뉴</div>
           <Itmes setStateData={setStateData} menuList={menuList} setList={setList} setTargetID={setTargetID}/>
           <div className='addtop'>
             <button className='addsize' onClick={viewAdd}>메뉴추가
@@ -26,6 +27,9 @@ function Main({targetID, setTargetID, menuList, kategorie, setKategorie, setList
     if(kategorie !== 'all'){
       setItems(
         <>
+          <div id='katagorietitle'>
+            {kategorie+"메뉴"}
+          </div>
           <Kategorie setStateData={setStateData} menuList={menuList} setList={setList} setTargetID={setTargetID}/>
           <div className='addtop'>
             <button className='addsize' onClick={viewAdd}>메뉴추가

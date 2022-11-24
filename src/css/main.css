@@ -1,6 +1,19 @@
 .maintitle{
   display: grid;
   justify-content: center;
+  font-size: 60px;
+}
+#alltitle{
+  margin-top: 26px;
+  display: grid;
+  justify-content: center;
+  font-size: 40px;
+}
+#katagorietitle{
+  margin-top: 26px;
+  display: grid;
+  justify-content: center;
+  font-size: 40px;
 }
 .addtop{
   display: grid;
@@ -18,4 +31,5 @@
 .plus{
   font-size: xx-large;
 }
+
 
