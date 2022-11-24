@@ -2,6 +2,7 @@
   display: grid;
   justify-content: center;
   font-size: 60px;
+  padding-right: 120px;
 }
 #alltitle{
   margin-top: 26px;
