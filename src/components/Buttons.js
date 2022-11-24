@@ -28,23 +28,23 @@ function Buttons({setKategorie}){
           <div onClick={viewAll}>전체</div>
         </div> 
 
-        <div>
+        <div className="bb">
           <div onClick={viewDrink}>음료</div>
         </div>
 
-        <div>
+        <div className="bb">
           <div onClick={viewMeal}>식사</div>
         </div>
 
-        <div>
+        <div className="bb">
           <div onClick={viewDessert}>디저트</div>
         </div>  
 
-        <div>
+        <div className="bb">
           <div onClick={viewSide}>사이드</div> 
         </div>
 
-        <div>
+        <div className="bb">
           <div onClick={viewSpecialties}>특선</div>
         </div>
       </div>  
