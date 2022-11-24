@@ -51,6 +51,7 @@ function Login({setLogin, setToken, setStateData}){
         password: inputPWD
       })
       .then(function (response){
+      console.log(response.status)
         setLogin(true);
         setStateData('main');
         setToken(response.data.Token)
