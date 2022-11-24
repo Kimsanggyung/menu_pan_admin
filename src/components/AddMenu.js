@@ -105,6 +105,10 @@ function AddMenu({setStateData}){
 
   return(
     <div className="addform">
+      <div id='addtitle'>
+        메뉴추가
+      </div>
+
       <div className="image">
         <span className='imgtext'>상품사진: </span>
         <input type="file" 
