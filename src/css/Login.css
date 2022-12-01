@@ -2,6 +2,7 @@
   background-color: black
 }
 form{
+  margin-top: 48px;
   height: 520px;
   width: 400px;
   background-color: rgba(255,255,255,0.13);
