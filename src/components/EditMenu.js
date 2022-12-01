@@ -120,74 +120,76 @@ const submit = () => {
 const exit = () => {
   setStateData('detail')
 }
-
-return(
-  <>
-    <div className="addform">
-      <div className="image">
-        <span className='imgtext'>상품사진: </span>
-        <input type="file" 
-          accept='image/jpg,impge/png,image/jpeg,image/gif'
-          onChange={handleChangeFile}
-          ></input>
-        <div className='menuimg'>
-          {imgFile}
+if(image !== ''){
+  return(
+    <>
+      <div className="addform">
+        <div className="image">
+          <span className='imgtext'>상품사진: </span>
+          <input type="file" 
+            accept='image/jpg,impge/png,image/jpeg,image/gif'
+            onChange={handleChangeFile}
+            ></input>
+          <div className='menuimg'>
+            {imgFile}
+          </div>
+        </div>   
+        
+        <div className='name'>
+          <span>상품명: </span>
+          <input type="text" value={name} onChange={nameChange}></input>
+        </div> 
+  
+        <div className='price'>
+          <span>상품가격: </span>
+          <input type="text" value={price} onChange={priceChange}></input>
+        </div> 
+  
+        <div className='class'>
+          <span>상품분류:</span>
+          <select value={kategorie} onChange={kategorieChange}>
+            <option>--</option>
+            <option>음료</option>
+            <option>식사</option>
+            <option>디저트</option>
+            <option>사이드</option>
+            <option>특선</option>
+          </select>
         </div>
-      </div>   
-      
-      <div className='name'>
-        <span>상품명: </span>
-        <input type="text" value={name} onChange={nameChange}></input>
-      </div> 
-
-      <div className='price'>
-        <span>상품가격: </span>
-        <input type="text" value={price} onChange={priceChange}></input>
-      </div> 
-
-      <div className='class'>
-        <span>상품분류:</span>
-        <select value={kategorie} onChange={kategorieChange}>
-          <option>--</option>
-          <option>음료</option>
-          <option>식사</option>
-          <option>디저트</option>
-          <option>사이드</option>
-          <option>특선</option>
-        </select>
+  
+        <div>
+          <span>상품정보: </span>
+          <textarea type="text" value={info} onChange={infoChange}></textarea>
+        </div>
+  
+        <div>
+          <span>영양정보: </span>
+          <textarea type="text" value={facts} onChange={factsChange}></textarea>
+        </div>
+  
+        <div>
+          <span>알레르기정보: </span>
+          <textarea type="text" value={allergy} onChange={allergyChange}></textarea>
+        </div>
+  
+        <div>
+          <span>출시일: </span>
+          <input type="date" value={date} onChange={dateChange}></input>
+        </div>
+  
+        <div className='error'>
+          {error}
+        </div>
+  
+        <div >
+          <button type='submit' onClick={exit}>취소</button>
+          <button type='submit' className='addbutton' onClick={submit}>수정</button>
+        </div>
       </div>
+    </>
+  )
+}
 
-      <div>
-        <span>상품정보: </span>
-        <textarea type="text" value={info} onChange={infoChange}></textarea>
-      </div>
-
-      <div>
-        <span>영양정보: </span>
-        <textarea type="text" value={facts} onChange={factsChange}></textarea>
-      </div>
-
-      <div>
-        <span>알레르기정보: </span>
-        <textarea type="text" value={allergy} onChange={allergyChange}></textarea>
-      </div>
-
-      <div>
-        <span>출시일: </span>
-        <input type="date" value={date} onChange={dateChange}></input>
-      </div>
-
-      <div className='error'>
-        {error}
-      </div>
-
-      <div >
-        <button type='submit' onClick={exit}>취소</button>
-        <button type='submit' className='addbutton' onClick={submit}>수정</button>
-      </div>
-    </div>
-  </>
-)
 
 }
 
