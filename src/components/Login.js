@@ -55,7 +55,7 @@ function Login({setLogin, setToken, setStateData}){
     };
     if(inputID !== "" && inputPWD !== ""){
       axios
-      .post("http://127.0.0.1:8000/login/", {
+      .post("https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/login/", {
         id: inputID,
         password: inputPWD
       })

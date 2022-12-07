@@ -83,7 +83,7 @@ function AddMenu({setStateData}){
     }
     if(image && name && kategorie && info && nutrition && allergy && date && price){
       setError('')
-      axios.post("http://127.0.0.1:8000/menu/", {
+      axios.post("https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/", {
         image: image,
         name: name,
         info: info,

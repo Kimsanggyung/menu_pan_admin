@@ -24,7 +24,7 @@ function Signup({setStateData}){
 
   const checkSameID = () => {
     if(reUsername.test(inputID)){
-      axios.get("http://127.0.0.1:8000/signup/")
+      axios.get("https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/signup/")
       .then((response)=>{
         if(response.data.length > 0){
           const checkSame = response.data.find((data)=>{
@@ -71,7 +71,7 @@ function Signup({setStateData}){
     };
     if(inputID !== null && inputPWD !== null && inputPWD !== null && checkPWD === inputPWD && rePassword.test(inputPWD) && checked === true){ // 입력창에 모두 비어있지 않고 중복확인을 하고 입력한 비밀번호와 비밀번호 확인이 같다면
     axios
-    .post("http://127.0.0.1:8000/signup/", {
+    .post("https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/signup/", {
       id: inputID,
       password: inputPWD
     })

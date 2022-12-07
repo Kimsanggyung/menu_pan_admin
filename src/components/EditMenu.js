@@ -48,7 +48,7 @@ function Edit({targetID, setStateData}){
 }
 
 useEffect(()=>{
-  axios.get(`http://127.0.0.1:8000/menu/${targetID}/`)
+  axios.get(`https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/${targetID}/`)
     .then((response)=>{
       setImage(response.data.image)
       setName(response.data.name)
@@ -97,7 +97,7 @@ const submit = () => {
   if(image && name && kategorie && info && facts && allergy && date && price){
     setError('')
     axios
-    .put(`http://127.0.0.1:8000/menu/${targetID}`, {
+    .put(`https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/${targetID}`, {
       image: image,
       name: name,
       info: info,

@@ -9,7 +9,7 @@ function Logout({token, setStateData, setLogin}){
     localStorage.clear()
     sessionStorage.clear()
     axios
-      .delete(`http://127.0.0.1:8000/logout/`,{
+      .delete(`https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/logout/`,{
         headers: {
           Authorization: `Token ${token}`
         }

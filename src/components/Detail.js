@@ -14,7 +14,7 @@ function Detail({targetID, setList, setStateData}){
   const [date, setDate] = useState('');
 
   useEffect(()=>{
-    axios.get(`http://127.0.0.1:8000/menu/${targetID}`)
+    axios.get(`https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/${targetID}`)
     .then((response)=>{
       setImage(response.data.image)
       setName(response.data.name)
@@ -39,9 +39,9 @@ function Detail({targetID, setList, setStateData}){
 
   const drop = () => {
     if (window.confirm(`${name} 메뉴을 삭제 하시겠습니까?`) === true){ 
-      axios.delete(`http://127.0.0.1:8000/menu/${targetID}`,{
+      axios.delete(`https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/${targetID}`,{
       }).then(()=>{
-        axios.get("http://127.0.0.1:8000/menu/", {
+        axios.get("https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/", {
         })
         .then((response)=>{
           setList(response.data)

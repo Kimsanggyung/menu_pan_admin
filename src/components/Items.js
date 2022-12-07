@@ -12,7 +12,7 @@ function Itmes({menuList, setList, setTargetID, setStateData}){
   }
 
   useEffect(()=>{
-    axios.get("http://127.0.0.1:8000/menu/")
+    axios.get("https://port-0-menu-pan-api-11er1a24lbd1a3g7.gksl2.cloudtype.app/menu/")
     .then(function(response){
       console.log(response.status)
       setList(response.data)
