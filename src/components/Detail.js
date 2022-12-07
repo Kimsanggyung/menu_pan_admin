@@ -1,4 +1,5 @@
 import axios from "axios";
+import '../css/Detail.css'
 import { useEffect, useState } from "react";
 
 function Detail({targetID, setList, setStateData}){
@@ -56,43 +57,44 @@ function Detail({targetID, setList, setStateData}){
 
   return(
     <>
-      <div>
+      <div className="detailcontents">
         <div>
           <div>
-            <img src={image} alt={name + "상품사진"}></img>
+            <img className="detailimage" src={image} alt={name + "상품사진"}></img>
           </div>
       
           <div>
-            <div>{name}</div>
+            <div className="porductname">{name}</div>
           </div>
 
-          <div>
-            <div>상품분류: </div>
-            <div>{kategorie}</div>
+          <div className="pricebox">
+            <div className="pricetag">가격: </div>
+            <div className="price">{price}</div>
           </div>
 
-          <div>
-            <div>{info}</div>
+          <div className="infobox">
+            <div className="productinfo">{info}</div>
           </div>
       
-          <div>
-            <div>출시일: </div>
-            <div>{date}</div>
-          </div>
-
-          <div>
-            <div>가격: </div>
-            <div>{price}</div>
-          </div>
-
-          <div>
+        
+          <div className="factsbox">
             <div>영양정보: </div>
             <div>{facts}</div>
           </div>
 
-          <div>
-            <div>알러지 성분: </div>
+          <div className="allergybox">
+            <div className="allergytag">알러지 성분: </div>
             <div>{allergy}</div>
+          </div>
+
+          <div className="kategoriebox">
+            <div className="kategorietag">상품분류: </div>
+            <div id="kategorieis">{kategorie}</div>
+          </div>
+
+          <div className="datebox">
+            <div className="datetag">출시일: </div>
+            <div className="date">{date}</div>
           </div>
 
           <div>

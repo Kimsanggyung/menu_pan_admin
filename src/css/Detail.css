@@ -1,0 +1,70 @@
+.detailcontents{
+  display: grid;
+  justify-content: center;
+  margin-top: 100px;
+}
+.detailimage{
+  width: 396px;
+  height: 396px;
+}
+.porductname{
+  display: grid;
+  justify-content: center;
+  margin-top: 18px;
+  font-size: 19px;
+}
+.kategorietag{
+  float: left;
+  margin-top: 8px;
+}
+.kategoriebox{
+  background-color: aliceblue;
+  height: 32px;
+}
+#kategorieis{
+  float: right;
+  margin-top: 8px;
+  margin-right: 289px;
+}
+.pricebox{
+  margin-top: 12px;
+  background-color: rgb(219, 233, 233);
+  height: 32px;
+  font-size: large;
+}
+.pricetag{
+  float: left;
+  margin-top: 8px;
+}
+.price{
+  float: right;
+  margin-top: 8px;
+  margin-right: 316px;
+}
+.infobox{
+  height: 112px;
+  background-color: azure;
+}
+.productinfo{
+  padding-top: 16px;
+}
+.factsbox{
+  background-color: rgb(226, 255, 255);
+  height: 112px;
+}
+.allergybox{
+  background-color: rgb(221, 238, 252);
+}
+.datebox{
+  background-color: rgb(218, 253, 253);
+  height: 32px;
+}
+.datetag{
+  float: left;
+  margin-top: 8px;
+}
+.date{
+  float: right;
+  margin-top: 8px;
+  margin-right: 256px;
+}
